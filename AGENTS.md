@@ -14,7 +14,7 @@ The shared `POST /triage` endpoint runs the starter's fixed questions. For custo
 - Build questions with the SDK helpers `noul`, `choice` and `score` from `@typesafe-ai/sdk`. Answer types are inferred from them, so don't cast.
 - Ask several questions about the same state in one `jev.systemOne` call instead of looping one question at a time.
 - Don't fire large batches with `Promise.all`. The queue will hold them, but keep loops small during the workshop.
-- The organizer sets `TYPESAFE_API_KEY` in the laptop's gitignored `.env` and forwards port 3000 over ngrok. Attendees use the public workshop URL and event code from `.env.example` to call `POST /triage` via `src/workshop.ts`. Keep the TypeSafe key and ngrok authtoken private.
+- Attendees use the public workshop URL and event code from `.env.example` to call `POST /triage` via `src/workshop.ts`. Keep TypeSafe API keys out of Git.
 
 ## Question types
 
@@ -29,7 +29,6 @@ Examples live in `src/examples/`. Full docs: https://docs.typesafe.ai (index for
 ## Commands
 
 ```sh
-npm start          # organizer's workshop server
 npm run triage     # attendee's workshop command
 npm test           # integration check with a TypeSafe stub
 npm run dev        # direct SDK demo with your own TypeSafe key

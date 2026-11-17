@@ -10,24 +10,6 @@ Build any tool or app you want around [Jev](https://docs.typesafe.ai), TypeSafe'
 
 On a machine with Node 22+, clone the workshop branch and run `npm ci`, `cp .env.example .env`, and `npm run triage`. If the organizer changes the public settings, update `WORKSHOP_URL` and `WORKSHOP_ACCESS_CODE` in any existing `.env`.
 
-## Organizer setup
-
-1. Run `npm ci` on your laptop. Put the TypeSafe key in your gitignored `.env` and copy the public `WORKSHOP_ACCESS_CODE` from `.env.example` into that same file.
-2. Start the workshop server in one terminal.
-
-   ```sh
-   HOST=127.0.0.1 PORT=3000 node --import tsx --env-file=.env src/server.ts
-   ```
-
-3. Start the HTTPS tunnel in a second terminal after [setting up ngrok](https://ngrok.com/download/mac-os).
-
-   ```sh
-   ngrok http http://127.0.0.1:3000
-   ```
-
-4. Make sure the HTTPS address on ngrok's **Forwarding** line matches `WORKSHOP_URL` in `.env.example`. Run `npm run triage` from a fresh forked Codespace before sharing the workshop branch.
-5. Stop ngrok with Ctrl-C at the end of the event, then stop the server. While the tunnel is open, anyone with the public code can submit tickets and use the workshop's TypeSafe credits.
-
 Run `npm test` for the local integration check with a TypeSafe stub and `npm run typecheck` for the TypeScript check.
 
 ## What's in here
@@ -42,7 +24,7 @@ Quick version of the three types: noul is a yes/no question and gives you the pr
 
 ## Request limits
 
-The server accepts text tickets up to 4096 bytes and caps pending requests at 24. Its Jev queue allows at most 2 upstream requests in flight and spaces starts 300ms apart. The organizer can adjust these upstream settings with `JEV_MAX_CONCURRENT` and `JEV_MIN_GAP_MS`. If the room fills the queue, wait briefly before trying again.
+The server accepts text tickets up to 4096 bytes. If the room fills the queue, wait briefly before trying again.
 
 Also, put all your questions about one input in a single request instead of one request per question. Cheaper and lighter on the key.
 

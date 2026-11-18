@@ -12,7 +12,7 @@ const maxConcurrent = Number(process.env.JEV_MAX_CONCURRENT ?? 2);
 const minGapMs = Number(process.env.JEV_MIN_GAP_MS ?? 300);
 
 if (!process.env.TYPESAFE_API_KEY) {
-  console.error("TYPESAFE_API_KEY is missing. Run `cp .env.example .env` and paste the key in.");
+  console.error("Direct Jev calls require TYPESAFE_API_KEY.");
   process.exit(1);
 }
 

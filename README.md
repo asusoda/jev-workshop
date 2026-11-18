@@ -2,13 +2,47 @@
 
 Build any tool or app you want around [Jev](https://docs.typesafe.ai), TypeSafe's decision model. Ticket triage is a starter example that shows how to send input, ask three kinds of questions, and use the answers in your code.
 
-## Setup (5 min)
+## Option 1: GitHub Codespaces
 
-1. Fork this repo (top right, Fork).
-2. On your fork, select the workshop branch, then click **Code → Codespaces → Create codespace**. Setup installs dependencies and copies the public workshop URL and code from `.env.example` into `.env`.
-3. Run `npm run triage` in the terminal. Try your own input with `npm run triage -- "I was charged twice for dues"`. Look for a Jev model name and the `urgent`, `team`, and `frustration` answers. Leave `TYPESAFE_API_KEY` blank.
+1. On GitHub, click **Fork** and create the fork in your account.
+2. Open your fork on `main`. Click **Code → Codespaces → Create codespace on main**.
+3. Wait for setup to finish. The Codespace installs dependencies and creates `.env` from `.env.example` with the workshop URL and access code.
+4. In the Codespace terminal, run the starter example.
 
-On a machine with Node 22+, clone the workshop branch and run `npm ci`, `cp .env.example .env`, and `npm run triage`. If the organizer changes the public settings, update `WORKSHOP_URL` and `WORKSHOP_ACCESS_CODE` in any existing `.env`.
+   ```sh
+   npm run dev
+   ```
+
+## Option 2: Clone locally
+
+1. Make sure Git and Node.js 22 or newer are installed. Check your Node version with `node --version`.
+2. Clone `main` and enter the project folder. Use your fork's clone URL if you plan to push your own changes.
+
+   ```sh
+   git clone --branch main https://github.com/asusoda/jev-workshop.git
+   cd jev-workshop
+   ```
+
+3. Install dependencies and create your local `.env`.
+
+   ```sh
+   npm ci
+   cp .env.example .env
+   ```
+
+4. Run the starter example.
+
+   ```sh
+   npm run dev
+   ```
+
+## Try another input
+
+The example prints a Jev model name and three answers in JSON: `urgent`, `team`, and `frustration`. You can leave `TYPESAFE_API_KEY` blank for this example. If the organizer gives you new workshop settings, update `WORKSHOP_URL` and `WORKSHOP_ACCESS_CODE` in your `.env`.
+
+```sh
+npm run dev -- "I was charged twice for my club dues."
+```
 
 Run `npm test` for the local integration check with a TypeSafe stub and `npm run typecheck` for the TypeScript check.
 
@@ -16,7 +50,7 @@ Run `npm test` for the local integration check with a TypeSafe stub and `npm run
 
 `src/workshop.ts` sends a ticket to the workshop server. `src/triage.ts` defines the three Jev questions the server asks in one request.
 
-`src/index.ts` and `src/examples/` show direct SDK usage. With your own TypeSafe key, run `npm run dev`, `npm run noul`, `npm run choice` or `npm run score`.
+`src/index.ts` and `src/examples/` show direct SDK usage. With your own TypeSafe key, run `npm run direct`, `npm run noul`, `npm run choice` or `npm run score`.
 
 `src/jev.ts` is the shared client. Use `jev` from there for every call, don't make your own client.
 

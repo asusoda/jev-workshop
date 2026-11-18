@@ -6,7 +6,7 @@ This is a small TypeScript starter for Jev, TypeSafe's decision model. Jev doesn
 
 Help attendees build any tool or app they choose around Jev. Ticket triage is an example of the request and response flow. Use it to explain the pattern, then adapt the input, questions, and app behavior to the attendee's idea. Start with one decision and try both clear and ambiguous inputs.
 
-The shared `POST /triage` endpoint runs the starter's fixed questions. For custom questions, adapt `src/examples/` and use the attendee's own TypeSafe key for live requests. Sample answers can be used while building the app logic.
+Follow the README to start a Codespace from a fork's `main` branch or clone `main` locally. Run `npm run dev` to send a sample ticket to the shared `POST /triage` endpoint, which runs the starter's fixed questions. The attendee command only needs the workshop URL and code. For custom questions, adapt `src/examples/` and use the attendee's own TypeSafe key for live requests. Sample answers can be used while building the app logic.
 
 ## How to call Jev here
 
@@ -29,9 +29,10 @@ Examples live in `src/examples/`. Full docs: https://docs.typesafe.ai (index for
 ## Commands
 
 ```sh
-npm run triage     # attendee's workshop command
+npm run dev        # attendee example via the workshop server
+npm run triage     # alias for the attendee example
 npm test           # integration check with a TypeSafe stub
-npm run dev        # direct SDK demo with your own TypeSafe key
+npm run direct     # direct SDK demo with your own TypeSafe key
 npm run noul       # src/examples/noul.ts (same for choice, score)
 npm run typecheck  # tsc --noEmit, run before you say something works
 ```

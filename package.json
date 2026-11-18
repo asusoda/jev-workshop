@@ -5,9 +5,10 @@
   "engines": { "node": ">=22" },
   "scripts": {
     "start": "node --import tsx src/server.ts",
+    "dev": "npm run triage --",
     "triage": "node --import tsx --env-file=.env src/workshop.ts",
     "test": "node --import tsx --test test/*.test.ts",
-    "dev": "tsx --env-file=.env src/index.ts",
+    "direct": "node --import tsx --env-file=.env src/index.ts",
     "noul": "tsx --env-file=.env src/examples/noul.ts",
     "choice": "tsx --env-file=.env src/examples/choice.ts",
     "score": "tsx --env-file=.env src/examples/score.ts",

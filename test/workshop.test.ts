@@ -4,7 +4,7 @@ import { once } from "node:events";
 import { test } from "node:test";
 import { promisify } from "node:util";
 
-test("attendee triage uses the organizer key in one upstream request", async (t) => {
+test("npm run dev needs no attendee key and uses the organizer key for one Jev request", async (t) => {
   process.env.PORT = "0";
   process.env.HOST = "localhost";
   process.env.TYPESAFE_BASE_URL = "https://typesafe.test";
@@ -61,8 +61,8 @@ test("attendee triage uses the organizer key in one upstream request", async (t)
   assert.equal(upstreamCalls, 0);
 
   const { stdout } = await promisify(execFile)(
-    process.execPath,
-    ["--import", "tsx", "src/workshop.ts", "I was charged twice"],
+    "npm",
+    ["run", "--silent", "dev", "--", "I was charged twice"],
     { env: { ...process.env, TYPESAFE_API_KEY: "", WORKSHOP_URL: url }, timeout: 5000 },
   );
   assert.deepEqual(JSON.parse(stdout), result);
